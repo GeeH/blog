@@ -18,7 +18,42 @@ Namespaces
 
 Lots of people will have been using namespaces since the release of PHP 5.3 in 2009. I'm sure that lots of people (like me) will have been happily working away with their chosen framework and *not* used namespaces. For me, jumping from ZF1 to ZF2 also meant jumping from `Long_Unweildy_Unscore_Seperated_Class_Names` to nice `Snappy\Namespaced\Classes`. If there's one thing in PHP I wish I'd started using earlier, it's namespaces.
 
+Namespaces basically allow you to have short, snapp classnames without worrying about colissions. The reason the ZF1 uses incredibly verbose underscore seperated classnames like `Zend_Db_Table_Abstract` is because if it was just called `TableAbsract` then there is no guarentee that some other code library won't be included that also has a class named `TableAbstract`, and errors abound.
+In the pre-namespace world, the way to try and avoid collisions was to attempt to be unique through being verbose. While this works, it's hardly any fun for the developer who has to remember very long and tedious class names.
 
+Up steps the namespace. It allows you to set a base namespace across many files, that allows those files to share a namespace. You can then declare any classes you wish to share that namespace without fear of collision.
+
+```<?php
+namespace Spabby;
+class Client
+{
+}
+
+<?php
+namespace Zend;
+class Client
+{
+}
+```
+This is fine, no errors will occur, because I need to use the Full-Qualified-Namespace (FQN) to reference these classes; 
+`$client = new \Spabby\Client();`
+"How does this help!" I hear you cry. Because in the namespace section of any PHP file, we can also tell the parser to import other namespaces via the `use` command.
+```
+<?php
+namespace Spabby;
+use Zend\Http\Client;
+
+class Hello
+{
+    public function world()
+    {
+        $client = new Client();
+    }
+}
+````
+Because of the `use` statement, PHP will instanciate a new Zend\Http\Client. Clever.
+
+Obviously, this is a very lightweight introduction to namespaces, they deserve a blog post all of their own. Because I'm lazy, and because someone inevitably will have done it better, to learn more check out Rob ALlen
 Modules
 --
 
