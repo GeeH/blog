@@ -1,0 +1,4 @@
+blog
+====
+
+Just a blog.
