@@ -13,11 +13,11 @@ https://github.com/zendframework/ZendSkeletonApplication
 
 Once you've cloned a copy of the application locally, you can use composer to install it's dependancies (currently only ZF2). Composer is brilliant. It's a dependancy/package manager that lets you grab any code you need from various locations just by modifying a json text file and running a php command line script. If you are serious about learning to use ZF2, I suggest you have a play with it, it's great. THe documentation for the skeleton app includes instructions on using composer to pull ZF2. Composer also handles all your auto-loading needs, so you don't need to manually configure your PHP autoloading if your using it, which is another great reason to be using it.
 
-
-
-
 Namespaces
 --
+
+Lots of people will have been using namespaces since the release of PHP 5.3 in 2009. I'm sure that lots of people (like me) will have been happily working away with their chosen framework and *not* used namespaces. For me, jumping from ZF1 to ZF2 also meant jumping from `Long_Unweildy_Unscore_Seperated_Class_Names` to nice `Snappy\Namespaced\Classes`. If there's one thing in PHP I wish I'd started using earlier, it's namespaces.
+
 
 Modules
 --
