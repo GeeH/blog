@@ -11,7 +11,7 @@ There is currently no command line tool for ZF2. Let me repeat that. There is cu
 
 https://github.com/zendframework/ZendSkeletonApplication
 
-Once you've cloned a copy of the application locally, you can use composer to install it's dependancies (currently only ZF2). Composer is brilliant. It's a dependancy/package manager that lets you grab any code you need from various locations just by modifying a json text file and running a php command line script. If you are serious about learning to use ZF2, I suggest you have a play with it, it's great. THe documentation for the skeleton app includes instructions on using composer to pull ZF2. Composer also handles all your auto-loading needs, so you don't need to manually configure your PHP autoloading if your using it, which is another great reason to be using it.
+Once you've cloned a copy of the application locally, you can use composer to install it's dependancies (currently only ZF2). Composer is brilliant. It's a dependancy/package manager that lets you grab any code you need from various locations just by modifying a json text file and running a php command line script. If you are serious about learning to use ZF2, I suggest you have a play with it, it's great. THe documentation for the skeleton app includes instructions on using composer to pull ZF2. Composer also handles all your auto-loading needs, so you don't need to manually configure your PHP autoloading, which is another great reason to be using it.
 
 Namespaces
 --
@@ -53,7 +53,14 @@ class Hello
 ````
 Because of the `use` statement, PHP will instanciate a new Zend\Http\Client. Clever.
 
-Obviously, this is a very lightweight introduction to namespaces, they deserve a blog post all of their own. Because I'm lazy, and because someone inevitably will have done it better, to learn more check out Rob ALlen
+Obviously, this is a very lightweight introduction to namespaces, they deserve a blog post all of their own. Because I'm lazy, and because someone inevitably will have done it better, to learn more check out Rob Allen's primer here:
+
+http://akrabat.com/php/a-primer-on-php-namespaces/
+
+or php.net's introduction:
+
+http://uk.php.net/manual/en/language.namespaces.php
+
 Modules
 --
 
