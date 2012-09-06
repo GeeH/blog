@@ -1,4 +1,8 @@
 An Introduction to Zend Framework 2 for the Zend Framework 1 Developer
+06092012
+true
+
+An Introduction to Zend Framework 2 for the Zend Framework 1 Developer
 ==
 
 !date 06/09/2012 
