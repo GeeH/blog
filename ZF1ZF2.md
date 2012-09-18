@@ -1,4 +1,5 @@
 An Introduction to Zend Framework 2 for the Zend Framework 1 Developer
+zf2-for-zf1-users
 06092012
 true
 
@@ -30,22 +31,27 @@ In the pre-namespace world, the way to try and avoid collisions was to attempt t
 
 Up steps the namespace. It allows you to set a base namespace across many files, that allows those files to share a namespace. You can then declare any classes you wish to share that namespace without fear of collision.
 
-```<?php
+~~~
+<?php
 namespace Spabby;
 class Client
 {
 }
+~~~
 
+~~~
 <?php
 namespace Zend;
 class Client
 {
 }
-```
+~~~
+
 This is fine, no errors will occur, because I need to use the Fully-Qualified-Namespace (FQN) to reference these classes; 
 `$client = new \Spabby\Client();`
 "How does this help!" I hear you cry. Because in the namespace section of any PHP file, we can also tell the parser to import other namespaces via the `use` command.
-```
+
+~~~
 <?php
 namespace Spabby;
 use Zend\Http\Client;
@@ -57,7 +63,8 @@ class Hello
         $client = new Client();
     }
 }
-````
+~~~
+
 Because of the `use` statement, PHP will instantiate a new Zend\Http\Client. Clever.
 
 Obviously, this is a very lightweight introduction to namespaces, they deserve a blog post all of their own. Because I'm lazy, and because someone inevitably will have done it better, to learn more check out Rob Allen's primer here:
@@ -75,7 +82,29 @@ http://uk.php.net/manual/en/language.namespaces.php
 Modules
 --
 
-Modules in Zend Framework 1 weren't really modular at all. ZF1 modules were
+Modules in Zend Framework 1 aren't really modular at all. ZF1 modules are really a method of grouping descrete areas of code together, without them being inherently reusable.
+It's impossible to grab a ZF1 module that someone else has used, and quickly and easily drop it into your project. Set up Zend Framework 2.
+
+Zend Framework 2's modules really are modular. You can drop in someone else's module, and with a simple line added to your application config file,
+you can be up and running in seconds. One of the key objectives when writing ZF2 was that it should make modular code-reuse as simple and easy as possible.
+I think this has been achieved with distinction. Once the ecosystem is established and mature, you should be able to easily add common functionality to your ZF2 project by
+ simply picking and choosing the modules you need from the repository.
+
+To quote a famous telephone manufacturer, need user registration and login functionality? There's a module for that.
+
+The Zend Framework Commons team are a group of Zend selected community contributors who are tasked with trying to "certify" high quality modules with the `Zf-Commons` namespace.
+`ZfcUser` is a user registration and login module written and maintained by them. Because it's `Zf-Commons`, it has an implied level of quality and maintenance. So, if you want
+to add user login and registration, it's simply a case of adding the ZfcUser dependency to your composer.json file:
+
+~~~
+    "require": {
+        "zf-commons/zfc-user": "dev-master"
+~~~
+
+Now, when you do a `php composer.phar update`, composer will pull in `ZfcUser` (and it's dependency `ZfcBase`) into your "vendor" library directory. Including the module is just a simple
+case of adding `ZfcUser` to your list of installed modules in `application.config.php`. The module needs a little configuration (create the database tables it uses and tell it which
+database connection to use), but because modules have their own routes, controllers and view scripts, once it's enabled you have a fully working user registration and authentication
+system available at the `/user` entry point in minutes.
 
 Bootstrapping
 --
